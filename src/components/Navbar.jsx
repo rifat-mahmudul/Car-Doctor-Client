@@ -25,7 +25,7 @@ const Navbar = () => {
 
     return (
         <>
-        <div className="py-5 max-w-[90%] xl:max-w-[1200px] mx-auto flex justify-between items-center">
+        <header className="py-5 max-w-[90%] xl:max-w-[1200px] mx-auto flex justify-between items-center top-0 sticky z-50 backdrop-blur-lg">
             <div>
                 <Link>
                     <img className='h-10' src={logo} alt="" />
@@ -44,7 +44,7 @@ const Navbar = () => {
                     <RxCross2></RxCross2>
                 }
             </button>
-        </div>
+        </header>
 
         <div>
             <div className='relative'>
