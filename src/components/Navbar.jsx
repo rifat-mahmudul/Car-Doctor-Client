@@ -47,7 +47,7 @@ const Navbar = () => {
         </header>
 
         <div>
-            <div className='relative'>
+            <div className='relative z-50'>
                 <div className={showNav ? `hidden` : `flex text-center py-5 px-10 rounded-lg shadow-xl border border-gray-500 flex-col gap-8 font-semibold absolute right-4 -top-5 bg-white`}>
                         {navItem}
                 </div>
