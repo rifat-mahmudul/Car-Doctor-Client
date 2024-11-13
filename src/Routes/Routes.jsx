@@ -10,6 +10,7 @@ import ManageInventory from "../Pages/ManageInventory";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import OrderNow from "../Pages/OrderNow";
+import AddService from "../Pages/AddService";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
                 path : "/orderNow",
                 element : <OrderNow></OrderNow>
             },
+            {
+                path : '/addService',
+                element : <AddService></AddService>
+            }
         ]
     },
 ],
