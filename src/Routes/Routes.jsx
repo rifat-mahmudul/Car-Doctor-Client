@@ -7,6 +7,7 @@ import Error from "../Pages/Error";
 import Order from "../Pages/Order";
 import OrderReview from "../Pages/OrderReview";
 import ManageInventory from "../Pages/ManageInventory";
+import Login from "../Pages/Login";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
                 path : "/manageInventory",
                 element : <ManageInventory></ManageInventory>
             },
+            {
+                path : "/login",
+                element : <Login></Login>
+            }
         ]
     },
 ],

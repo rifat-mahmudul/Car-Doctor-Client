@@ -18,8 +18,8 @@ const Navbar = () => {
                 <NavLink to="/order" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Order</NavLink>
                 <NavLink to="/orderReview" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Order Review</NavLink>
                 <NavLink to="/manageInventory" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Manage Inventory</NavLink>
-                <NavLink>
-                    <button className='px-5 py-2 bg-red-500 rounded-lg text-white'>Login</button>
+                <NavLink to="/login">
+                    <button className='px-5 py-2 bg-red-500 rounded-lg text-white'>sign in</button>
                 </NavLink>
     </>
 
