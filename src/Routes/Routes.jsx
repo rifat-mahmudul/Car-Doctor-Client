@@ -8,6 +8,7 @@ import Order from "../Pages/Order";
 import OrderReview from "../Pages/OrderReview";
 import ManageInventory from "../Pages/ManageInventory";
 import Login from "../Pages/Login";
+import SignUp from "../Pages/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -34,7 +35,11 @@ export const router = createBrowserRouter([
             {
                 path : "/login",
                 element : <Login></Login>
-            }
+            },
+            {
+                path : "/signUp",
+                element : <SignUp></SignUp>
+            },
         ]
     },
 ],
