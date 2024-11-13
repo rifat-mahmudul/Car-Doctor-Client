@@ -9,6 +9,7 @@ import OrderReview from "../Pages/OrderReview";
 import ManageInventory from "../Pages/ManageInventory";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
+import OrderNow from "../Pages/OrderNow";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path : "/signUp",
                 element : <SignUp></SignUp>
+            },
+            {
+                path : "/orderNow",
+                element : <OrderNow></OrderNow>
             },
         ]
     },
