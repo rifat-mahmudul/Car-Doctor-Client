@@ -8,11 +8,19 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
 
-    const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
     const [showNav, setShowNav] = useState(true);
 
     const handleNavIcon = () => {
         setShowNav(!showNav);
+    };
+
+    const handleLogOut = () => {
+        logOut()
+        .then()
+        .catch(error => {
+            console.log(error);
+        })
     }
 
     const navItem = <>
@@ -25,10 +33,10 @@ const Navbar = () => {
                         <NavLink to="/order" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>My Order</NavLink>
                         <NavLink to="/addService" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Add Service</NavLink>
                         <div className='h-10 w-10 rounded-full border border-gray-500'>
-                            <img className='h-full w-full' src={user?.photoURL} alt="" />
+                            <img className='h-full w-full rounded-full' src={user?.photoURL} alt="" />
                         </div>
                         <NavLink>
-                            <button className='px-5 py-2 bg-error rounded-lg text-white'>sign out</button>
+                            <button onClick={handleLogOut} className='px-5 py-2 bg-error rounded-lg text-white'>sign out</button>
                         </NavLink>
                     </>
                     :
