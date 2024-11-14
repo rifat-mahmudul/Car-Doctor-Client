@@ -4,6 +4,7 @@ import { RiMenu3Line } from "react-icons/ri";
 import { useContext, useState } from 'react';
 import { RxCross2 } from "react-icons/rx";
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Navbar = () => {
@@ -16,11 +17,27 @@ const Navbar = () => {
     };
 
     const handleLogOut = () => {
-        logOut()
-        .then()
-        .catch(error => {
-            console.log(error);
-        })
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, sign out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                .then()
+                .catch(error => {
+                    console.log(error);
+                })
+                Swal.fire({
+                    title: "Sign Out!",
+                    text: "Sign Out Successfully",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     const navItem = <>
