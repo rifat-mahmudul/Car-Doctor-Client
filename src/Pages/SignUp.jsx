@@ -41,7 +41,6 @@ const SignUp = () => {
                 icon: "error",
                 title: "Oops...",
                 text: `${error.massage}`,
-                footer: '<a href="#">Why do I have this issue?</a>'
             });
         })
     }
