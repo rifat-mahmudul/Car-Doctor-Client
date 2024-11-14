@@ -22,8 +22,6 @@ const AddService = () => {
             date
         }
 
-        console.log(serviceInfo);
-
         fetch('http://localhost:5000/services',{
             method : 'POST',
             headers : {

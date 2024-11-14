@@ -43,8 +43,9 @@ export const router = createBrowserRouter([
                 element : <SignUp></SignUp>
             },
             {
-                path : "/orderNow",
-                element : <OrderNow></OrderNow>
+                path : `/orderNow/:id`,
+                element : <OrderNow></OrderNow>,
+                loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
                 path : '/addService',
