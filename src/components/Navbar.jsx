@@ -1,12 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.svg'
 import { RiMenu3Line } from "react-icons/ri";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { RxCross2 } from "react-icons/rx";
+import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Navbar = () => {
 
+    const {user} = useContext(AuthContext);
     const [showNav, setShowNav] = useState(true);
 
     const handleNavIcon = () => {
@@ -15,12 +17,27 @@ const Navbar = () => {
 
     const navItem = <>
                 <NavLink to="/" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Home</NavLink>
-                <NavLink to="/order" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Order</NavLink>
-                <NavLink to="/addService" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Add Service</NavLink>
                 <NavLink to="/manageInventory" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Manage Inventory</NavLink>
-                <NavLink to="/login">
-                    <button className='px-5 py-2 bg-error rounded-lg text-white'>sign in</button>
-                </NavLink>
+
+                {
+                    user ? 
+                    <>
+                        <NavLink to="/order" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>My Order</NavLink>
+                        <NavLink to="/addService" className={({isActive}) => isActive ? `text-error border-b-2 border-error` : `hover:text-error`}>Add Service</NavLink>
+                        <div className='h-10 w-10 rounded-full border border-gray-500'>
+                            <img className='h-full w-full' src={user?.photoURL} alt="" />
+                        </div>
+                        <NavLink>
+                            <button className='px-5 py-2 bg-error rounded-lg text-white'>sign out</button>
+                        </NavLink>
+                    </>
+                    :
+                    <NavLink to="/login">
+                        <button className='px-5 py-2 bg-error rounded-lg text-white'>sign in</button>
+                    </NavLink>
+                }
+                
+                
     </>
 
     return (

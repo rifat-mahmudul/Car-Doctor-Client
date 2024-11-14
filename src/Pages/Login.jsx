@@ -1,9 +1,25 @@
 import { Link } from 'react-router-dom'
 import logIn from '../assets/images/login/login.svg'
 import { FcGoogle } from "react-icons/fc";
+import { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+
 
 
 const Login = () => {
+
+    const {signInGoogle} = useContext(AuthContext);
+
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content gap-20 flex-col lg:flex-row max-w-[90%] xl:max-w-[1200px] mx-auto">
@@ -27,7 +43,7 @@ const Login = () => {
                         <input type="password" placeholder="password" className="input input-bordered" required />
 
                         <p className='text-center mt-3 mb-4'>or</p>
-                        <button className='flex items-center mx-auto gap-2 border border-error p-3 rounded-lg mb-2'>
+                        <button onClick={handleGoogleSignIn} className='flex items-center mx-auto gap-2 border border-error p-3 rounded-lg mb-2'>
                             <FcGoogle className='text-2xl'></FcGoogle> 
                             <span>sign in with google</span>
                         </button>
