@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg'
 import { RiMenu3Line } from "react-icons/ri";
 import { useContext, useState } from 'react';
@@ -11,6 +11,7 @@ const Navbar = () => {
 
     const {user, logOut} = useContext(AuthContext);
     const [showNav, setShowNav] = useState(true);
+    const navigate = useNavigate();
 
     const handleNavIcon = () => {
         setShowNav(!showNav);
@@ -36,7 +37,8 @@ const Navbar = () => {
                     text: "Sign Out Successfully",
                     icon: "success"
                 });
-            }
+                navigate('/');
+            }   
         });
     }
 
@@ -52,9 +54,8 @@ const Navbar = () => {
                         <div className='h-10 w-10 rounded-full border border-gray-500'>
                             <img className='h-full w-full rounded-full' src={user?.photoURL} alt="" />
                         </div>
-                        <NavLink>
-                            <button onClick={handleLogOut} className='px-5 py-2 bg-error rounded-lg text-white'>sign out</button>
-                        </NavLink>
+                        
+                        <button onClick={handleLogOut} className='px-5 py-2 bg-error rounded-lg text-white'>sign out</button>
                     </>
                     :
                     <NavLink to="/login">

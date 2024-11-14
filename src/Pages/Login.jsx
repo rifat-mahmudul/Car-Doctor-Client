@@ -14,9 +14,7 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInGoogle()
-        .then(result => {
-            console.log(result.user)
-        })
+        .then()
         .catch(error => {
             console.log(error)
         })
