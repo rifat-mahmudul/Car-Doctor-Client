@@ -4,13 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const OrderNow = () => {
 
     const {user} = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
     const serviceInfo = useLoaderData();
-    const {name, price} = serviceInfo;
+    const {name, price, photoURL} = serviceInfo;
     const navigate = useNavigate();
 
     const handleOrder = e => {
@@ -20,24 +21,20 @@ const OrderNow = () => {
         const price = form.price.value;
         const date = form.date.value;
         const email = form.email.value;
+        const photoURL = form.photoURL.value;
 
         const orderInfo = {
-            name, price, date, email
+            name, price, date, email, photoURL
         }
 
         console.log(orderInfo);
 
-        fetch('http://localhost:5000/orders',{
-            method : 'POST',
-            headers : {
-                "content-type" : "application/json"
-            },
-            body : JSON.stringify(serviceInfo)
-        })
-        .then(res => res.json())
+    
+
+    axios.post('http://localhost:5000/orders', orderInfo)
         .then(data => {
-            console.log(data);
-            if(data.acknowledged){
+            console.log(data.data);
+            if(data.data.acknowledged){
                 Swal.fire({
                     icon: "success",
                     title: "Order Confirmed",
@@ -85,8 +82,15 @@ const OrderNow = () => {
                                 </div>
                             </div>
                         </div>
-
                         <div className="form-control mt-6">
+                        <div className=" mb-8 w-full">
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">PhotoURL</span>
+                                    </label>
+                                    <input name="photoURL" defaultValue={photoURL} type="text" placeholder="photoURL" className="input input-bordered " required/>
+                                </div>
+                        </div>
                         <button type="submit" className="btn btn-error font-bold text-white">Order Now</button>
                         </div>
                     </form>

@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 
@@ -27,14 +28,24 @@ const Login = () => {
         const password = form.password.value;
 
         signIn(email, password)
-        .then(() => {
+        .then((result) => {
             Swal.fire({
                 icon: "success",
                 title: "Sing In Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate('/');
+            
+            const loggedInUser = result.user;
+            console.log(loggedInUser)
+            const user = {email};
+            axios.post('http://localhost:5000/jwt', user, {withCredentials : true})
+            .then(res => {
+                console.log(res.data)
+                if(res.data.success){
+                    navigate('/');
+                }
+            })
         })
         .catch(error => {
             console.log(`error form log in page : `,error)
