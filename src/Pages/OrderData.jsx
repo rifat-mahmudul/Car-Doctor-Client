@@ -31,8 +31,8 @@ const OrderData = ({order, setOrders, orders}) => {
                             text: "Your coffee has been deleted.",
                             icon: "success"
                         });
-                        // const deleteOrder = orders.filter(c => c._id !== _id);
-                        // setOrders(deleteOrder);
+                        const deleteOrder = orders.filter(c => c._id !== _id);
+                        setOrders(deleteOrder);
                     }
                 })
                 .catch(error => console.error("Error deleting coffee:", error));
