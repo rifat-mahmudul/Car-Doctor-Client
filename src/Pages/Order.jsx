@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom"
+import { useState } from "react";
 import OrderData from "./OrderData";
+import axios from "axios";
 
 const Order = () => {
 
     const [orders, setOrders] = useState([])
-    const data = useLoaderData();
-    
-    
 
-    useEffect(() => {
-        setOrders(data);
-    }, [data])
+    axios.get('http://localhost:5000/orders')
+    .then(res => {
+        setOrders(res.data);
+    })
+
 
     return (
         <div className="overflow-x-auto max-w-[90%] xl:max-w-[1200px] mx-auto mb-14">
